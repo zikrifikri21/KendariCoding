@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Routing\Route as RoutingRoute;
 
 /*
@@ -32,7 +33,13 @@ Route::middleware([
 
 Route::get('/class', [KelasController::class, 'class']);
 
+Route::get('/class/{kelas:slug}', [KelasController::class, 'keterangan']);
+
 Route::controller(GoogleController::class)->group(function () {
     Route::get('auth/google', 'redirectToGoogle')->name('auth.google');
     Route::get('auth/google/callback', 'handleGoogleCallback');
+});
+Route::controller(RegisterController::class)->group(function(){
+    Route::get('auth.register', 'index');
+    Route::post('auth.register', 'store');
 });

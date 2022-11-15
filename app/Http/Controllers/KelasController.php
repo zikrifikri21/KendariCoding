@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\kelas;
+use App\Models\Kelas;
 
 class KelasController extends Controller
 {
@@ -15,11 +15,11 @@ class KelasController extends Controller
     public function class()
     {
         return view('frontend.class', [
-            "kelas" => kelas::all()
+            "kelas" => Kelas::all()
         ]);
     }
 
-    public function keterangan(kelas $kelas)
+    public function keterangan(Kelas $kelas)
     {
         return view('frontend.keterangan', [
             "kelas" => $kelas
